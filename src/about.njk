@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+permalink: about.html
+navKey: about
+section: about
+crumb: About
+title: About
+nextHref: index.html
+nextLabel: Back to Home
+description: The person behind the notebook.
+---
+<header class="page-hero">
+  <div class="supergraphic" style="font-style:italic">me</div>
+  <div class="eyebrow rise rise-1">the person behind the notebook</div>
+  <h1 class="rise rise-2">About <em>me</em>.</h1>
+  <p class="lede rise rise-3">I'm a patient and a researcher, in that order. This site is where those two roles overlap.</p>
+</header>
+
+<div class="about-photo rise rise-4">portrait placeholder</div>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">The short version</div>
+  </div>
+  <p class="lede" style="max-width:56ch;">
+    {{ about.shortVersion }}
+  </p>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="section-title">Background</div>
+  </div>
+  {% for fact in about.facts %}
+  <div class="about-fact"><div class="k">{{ fact.k }}</div><div class="v">{{ fact.v }}</div></div>
+  {% endfor %}
+</section>

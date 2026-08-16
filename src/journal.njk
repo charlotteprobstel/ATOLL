@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+permalink: journal.html
+navKey: journal
+section: journal
+crumb: Journal
+title: Journal
+nextHref: literature.html
+nextLabel: Literature
+description: Notes written as the research happened — unfiltered, dated, in reverse chronological order.
+---
+<header class="page-hero">
+  <div class="supergraphic">{{ site.stats.journalEntries }}</div>
+  <div class="eyebrow rise rise-1">{{ site.stats.journalEntries }} entries</div>
+  <h1 class="rise rise-2">The <em>journal</em>.</h1>
+  <p class="lede rise rise-3">Notes written as the research happened — unfiltered, dated, in reverse chronological order.</p>
+</header>
+
+<section class="rise rise-4">
+  {% for entry in journal %}
+  <div class="journal-item">
+    <div class="stitch"></div>
+    <div>
+      <div class="journal-date">{{ entry.date }}</div>
+      <div class="journal-title">{{ entry.title }}</div>
+      <div class="journal-excerpt">{{ entry.excerpt }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</section>

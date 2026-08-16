@@ -1,0 +1,24 @@
+{
+  "title": "ATOLL",
+  "tagline": "AI Tools for Ovarian Lesion Localisation",
+  "lastUpdated": "Jul 2026",
+  "formspreeId": "",
+  "stats": {
+    "papers": 142,
+    "models": 9,
+    "datasets": 6,
+    "journalEntries": 23,
+    "community": 4,
+    "charities": 6
+  },
+  "nav": [
+    { "key": "home", "label": "Home", "file": "index.html" },
+    { "key": "history", "label": "History", "file": "history.html" },
+    { "key": "journal", "label": "Journal", "file": "journal.html" },
+    { "key": "literature", "label": "Literature", "file": "literature.html" },
+    { "key": "models", "label": "Models", "file": "models.html" },
+    { "key": "community", "label": "Community", "file": "community.html" },
+    { "key": "charities", "label": "Charities", "file": "charities.html" },
+    { "key": "about", "label": "About", "file": "about.html" }
+  ]
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Dataset A",
+    "rows": [
+      { "label": "Type", "value": "C" },
+      { "label": "Source", "value": "GDC portal ↗", "href": "#" }
+    ]
+  }
+]

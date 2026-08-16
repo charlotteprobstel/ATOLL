@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>{% if title %}{{ title }} — {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ description or site.tagline }}">
+<link rel="stylesheet" href="/assets/css/design-system.css">
+<link rel="stylesheet" href="/assets/css/design.css">
+</head>
+<body{% if section %} class="section-{{ section }}"{% endif %}>
+<div class="shell">
+
+  <nav class="rail">
+    <div class="rail-brand">{{ site.title }}</div>
+    <div class="rail-thread">
+      {%- for item in site.nav %}
+      {%- if item.key == navKey %}
+      <div class="bead-wrap"><div class="bead active"></div><a class="bead-label" href="{{ item.file }}">{{ item.label }}</a></div>
+      {%- else %}
+      <a href="{{ item.file }}" class="bead-wrap"><div class="bead"></div><span class="bead-label">{{ item.label }}</span></a>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </nav>
+
+  <main>
+    <div class="topline">
+      <div class="crumb">{{ site.title }} / <b>{{ crumb }}</b></div>
+      {%- if nextHref %}
+      <a href="{{ nextHref }}" class="next-link">{{ nextLabel }} <span class="arr">→</span></a>
+      {%- endif %}
+    </div>
+    <div class="container">
+      {{ content | safe }}
+    </div>
+    <footer>Built entry by entry — last updated {{ site.lastUpdated }}</footer>
+  </main>
+</div>
+
+<button id="fluor-toggle" aria-label="Toggle fluorescent mode">⚗ fluor</button>
+
+{% include "partials/widget.njk" %}
+
+<script src="/assets/js/main.js"></script>
+{%- for src in extraScripts %}
+<script src="{{ src }}"></script>
+{%- endfor %}
+</body>
+</html>

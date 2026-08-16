@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+permalink: models.html
+navKey: models
+section: models
+crumb: Models & Data
+title: Models & Data
+nextHref: community.html
+nextLabel: Community
+description: Models and datasets, linked, versioned, and benchmarked in one place.
+---
+<header class="page-hero">
+  <div class="supergraphic">{{ site.stats.models }}</div>
+  <div class="eyebrow rise rise-1">{{ site.stats.models }} models · {{ site.stats.datasets }} datasets</div>
+  <h1 class="rise rise-2">Models &amp; <em>datasets</em>.</h1>
+  <p class="lede rise rise-3">Everything linked, versioned, and benchmarked in one place — the ML side of the notebook.</p>
+</header>
+
+<section class="rise rise-4">
+  <div class="section-head">
+    <div class="section-title">Models</div>
+    <div class="section-note mono">{{ site.stats.models }} tracked</div>
+  </div>
+  <div class="grid2">
+    {% for model in models %}
+    <div class="model-card">
+      <div class="model-name">{{ model.name }}</div>
+      {% for row in model.rows %}
+      <div class="model-row">{{ row.label }} <b>{% if row.href %}<a href="{{ row.href }}">{{ row.value }}</a>{% else %}{{ row.value }}{% endif %}</b></div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">Datasets</div>
+    <div class="section-note mono">{{ site.stats.datasets }} linked</div>
+  </div>
+  <div class="grid2">
+    {% for dataset in datasets %}
+    <div class="model-card">
+      <div class="model-name">{{ dataset.name }}</div>
+      {% for row in dataset.rows %}
+      <div class="model-row">{{ row.label }} <b>{% if row.href %}<a href="{{ row.href }}">{{ row.value }}</a>{% else %}{{ row.value }}{% endif %}</b></div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>

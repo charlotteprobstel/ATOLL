@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+permalink: community.html
+navKey: community
+section: community
+crumb: Community
+title: Community
+nextHref: index.html
+nextLabel: Back to Home
+description: Advocacy organizations, peer forums, and conferences where the clinical and research worlds meet the people living it.
+---
+<header class="page-hero">
+  <div class="supergraphic">{{ site.stats.community }}</div>
+  <div class="eyebrow rise rise-1">people &amp; places</div>
+  <h1 class="rise rise-2">The <em>community</em>.</h1>
+  <p class="lede rise rise-3">Advocacy organizations, peer forums, and conferences where the clinical and research worlds meet the people living it.</p>
+</header>
+
+<section class="rise rise-4">
+  {% for item in community %}
+  <div class="community-item">
+    <div>
+      <div class="community-name">{{ item.name }}</div>
+      <div class="community-type">{{ item.type }}</div>
+    </div>
+    <div class="arrow">↗</div>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">Map</div>
+    <div class="section-note mono">trial sites · support groups</div>
+  </div>
+  <div class="map-box">
+    map placeholder — clinics / trial sites / support groups
+    <div class="map-pin" style="left:30%; top:40%;"></div>
+    <div class="map-pin" style="left:55%; top:60%;"></div>
+    <div class="map-pin" style="left:70%; top:30%;"></div>
+  </div>
+</section>

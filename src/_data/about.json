@@ -1,0 +1,9 @@
+{
+  "shortVersion": "I was diagnosed in early 2026 and started reading everything I could find — first for myself, then out of genuine curiosity about how machine learning is actually being used in ovarian cancer research. This site is the record of that reading, organized the way I wish it had been organized for me on day one.",
+  "facts": [
+    { "k": "Focus", "v": "Ovarian cancer research, ML applications in oncology" },
+    { "k": "Background", "v": "Add your professional / academic background here" },
+    { "k": "Based in", "v": "Add your location here" },
+    { "k": "Contact", "v": "your@email.com" }
+  ]
+}

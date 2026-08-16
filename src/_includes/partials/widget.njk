@@ -1,0 +1,29 @@
+<button id="widget-btn" aria-label="Open panel">✦</button>
+<div id="widget-panel">
+  <div class="widget-tabs">
+    <button class="wtab active" data-tab="feedback">Feedback</button>
+    <button class="wtab" data-tab="ask">Ask</button>
+  </div>
+  <div class="widget-body">
+    <div id="wtab-feedback" class="widget-tab-body">
+      <form id="feedback-form" data-formspree-id="{{ site.formspreeId }}">
+        <label class="widget-label">Name</label>
+        <input class="widget-input" type="text" name="name" placeholder="anonymous">
+        <label class="widget-label">Email</label>
+        <input class="widget-input" type="email" name="email" placeholder="none">
+        <label class="widget-label">Message</label>
+        <textarea class="widget-textarea" name="message" required placeholder="What's on your mind?"></textarea>
+        <button class="widget-submit" type="submit">Send feedback →</button>
+      </form>
+      <div id="feedback-error" class="widget-error"></div>
+      <div id="feedback-success" class="widget-success">Thank you — message received.</div>
+    </div>
+    <div id="wtab-ask" class="widget-tab-body" style="display:none">
+      <div class="chat-area">
+        <div class="chat-sender">ATOLL</div>
+        <div class="chat-msg">Hi</div>
+      </div>
+      <input class="widget-input" type="text" placeholder="Ask me anything…" style="margin-bottom:0">
+    </div>
+  </div>
+</div>

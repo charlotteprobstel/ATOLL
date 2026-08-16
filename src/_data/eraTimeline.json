@@ -1,0 +1,32 @@
+[
+  {
+    "year": "1971",
+    "title": "Platinum compounds enter cancer treatment",
+    "body": "Cisplatin's anti-tumor activity is confirmed, laying the groundwork for platinum-based chemotherapy that remains first-line treatment today."
+  },
+  {
+    "year": "1981",
+    "title": "CA-125 is identified",
+    "body": "The CA-125 antigen is discovered and soon becomes the standard blood biomarker for monitoring ovarian cancer, despite its known limitations."
+  },
+  {
+    "year": "1994",
+    "title": "BRCA1 is cloned",
+    "body": "The BRCA1 gene is identified and linked to hereditary breast and ovarian cancer risk, followed by BRCA2 in 1995 — reshaping genetic counseling and screening."
+  },
+  {
+    "year": "2011",
+    "title": "TCGA publishes the ovarian cancer atlas",
+    "body": "The Cancer Genome Atlas releases a comprehensive genomic analysis of high-grade serous ovarian carcinoma, becoming the foundational public dataset for ML research in the field."
+  },
+  {
+    "year": "2014",
+    "title": "PARP inhibitors are approved",
+    "body": "Olaparib is approved for BRCA-mutated ovarian cancer, the first therapy to directly exploit a genetic vulnerability identified through molecular research."
+  },
+  {
+    "year": "2017",
+    "title": "The fallopian tube origin theory gains ground",
+    "body": "Growing evidence suggests many high-grade serous cases originate in the fallopian tube rather than the ovary, reshaping prevention and early-detection research."
+  }
+]

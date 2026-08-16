@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+permalink: history.html
+navKey: history
+section: history
+crumb: History
+title: History
+description: A condensed timeline of ovarian cancer research milestones, alongside personal research milestones.
+---
+<header class="page-hero">
+  <div class="supergraphic">1971</div>
+  <div class="eyebrow rise rise-1">a condensed timeline</div>
+  <h1 class="rise rise-2">The <em>history</em> of ovarian cancer research.</h1>
+  <p class="lede rise rise-3">Major clinical and scientific milestones, alongside the moments from my own research where something clicked. The line at the bottom is mine — it grows as I go.</p>
+</header>
+
+<section class="rise rise-4">
+  <div class="section-head">
+    <div class="section-title">Clinical &amp; scientific milestones</div>
+    <div class="section-note mono">1970 — present</div>
+  </div>
+  <div class="era-timeline">
+    {% for era in eraTimeline %}
+    <div class="era-item">
+      <div class="era-dot"></div>
+      <div class="era-year">{{ era.year }}</div>
+      <div class="era-title">{{ era.title }}</div>
+      <div class="era-body">{{ era.body }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">Milestones from my research</div>
+    <div class="section-note mono">ongoing — added as I go</div>
+  </div>
+  <div class="era-timeline" id="research-milestones">
+    {% for m in milestones %}
+    <div class="era-item">
+      <div class="era-dot milestone"></div>
+      <div class="era-year">{{ m.date }}</div>
+      <div class="era-title">{{ m.title }}</div>
+      <div class="era-body">{{ m.body }}</div>
+      {% if m.badge %}<span class="era-badge">{{ m.badge }}</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <p class="lede" style="font-size:0.82rem; margin-top:18px; max-width:56ch;">
+    This list is edited directly in <code>src/_data/milestones.json</code> — add a milestone (a result, a paper, a turning point) as a new entry at the end of that file and it shows up here permanently, in order.
+  </p>
+</section>

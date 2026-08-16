@@ -1,0 +1,101 @@
+[
+  {
+    "title": "Deep learning survival prediction in HGSOC",
+    "author": "Smith et al.",
+    "year": 2025,
+    "topic": "Deep Learning",
+    "journal": "Nature Digital Medicine",
+    "country": "USA",
+    "tags": ["HGSOC", "deep survival", "TCGA-OV"]
+  },
+  {
+    "title": "Radiomics-based response to platinum chemotherapy",
+    "author": "Chen et al.",
+    "year": 2024,
+    "topic": "Radiomics",
+    "journal": "JCO CCI",
+    "country": "USA",
+    "tags": ["chemo response", "radiomics"]
+  },
+  {
+    "title": "Multi-omic clustering: four ovarian cancer subtypes",
+    "author": "Verhaak et al.",
+    "year": 2013,
+    "topic": "Molecular Subtyping",
+    "journal": "Cancer Cell",
+    "country": "USA",
+    "tags": ["subtyping", "multi-omics", "TCGA-OV"]
+  },
+  {
+    "title": "Federated learning for rare cancer cohorts",
+    "author": "Okafor et al.",
+    "year": 2025,
+    "topic": "Federated Learning",
+    "journal": "npj Digital Medicine",
+    "country": "Nigeria",
+    "tags": ["federated learning", "rare cohort"]
+  },
+  {
+    "title": "CA-125 as a noisy biomarker: a critical review",
+    "author": "Patel et al.",
+    "year": 2023,
+    "topic": "Biomarkers",
+    "journal": "Lancet Oncology",
+    "country": "UK",
+    "tags": ["CA-125", "biomarker", "HGSOC"]
+  },
+  {
+    "title": "BRCA mutation status and PARP inhibitor response",
+    "author": "Liu et al.",
+    "year": 2019,
+    "topic": "Genetics / Treatment",
+    "journal": "NEJM",
+    "country": "USA",
+    "tags": ["BRCA", "PARP inhibitor", "treatment"]
+  },
+  {
+    "title": "Single-cell transcriptomics of HGSOC progression",
+    "author": "Zhang et al.",
+    "year": 2024,
+    "topic": "Transcriptomics",
+    "journal": "Nature Cancer",
+    "country": "China",
+    "tags": ["HGSOC", "single-cell", "subtyping"]
+  },
+  {
+    "title": "Transfer learning for small ovarian cancer datasets",
+    "author": "Müller et al.",
+    "year": 2024,
+    "topic": "Transfer Learning",
+    "journal": "Med. Image Analysis",
+    "country": "Germany",
+    "tags": ["transfer learning", "deep learning", "TCGA-OV"]
+  },
+  {
+    "title": "Histopathology AI for ovarian subtype classification",
+    "author": "Kather et al.",
+    "year": 2023,
+    "topic": "Computational Pathology",
+    "journal": "Lancet Digital Health",
+    "country": "Germany",
+    "tags": ["histology", "subtyping", "deep learning"]
+  },
+  {
+    "title": "Platinum resistance mechanisms in recurrent HGSOC",
+    "author": "Rosen et al.",
+    "year": 2022,
+    "topic": "Treatment Resistance",
+    "journal": "Cancer Research",
+    "country": "USA",
+    "tags": ["HGSOC", "chemo response", "treatment"]
+  },
+  {
+    "title": "Ovarian cancer early detection: multi-marker serum panel",
+    "author": "Moore et al.",
+    "year": 2023,
+    "topic": "Early Detection",
+    "journal": "Cancer Prevention Research",
+    "country": "UK",
+    "tags": ["CA-125", "biomarker", "early detection"]
+  }
+]

@@ -1,0 +1,255 @@
+/* =====================================================
+   ATOLL DESIGN SYSTEM v2
+   ===================================================== */
+
+/* --- 1. LIVING TISSUE BACKGROUND --- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='60'%3E%3Cpath d='M26 2 L50 15 L50 45 L26 58 L2 45 L2 15 Z' fill='none' stroke='%2322302A' stroke-width='0.7'/%3E%3C/svg%3E");
+  background-size: 52px 60px;
+  opacity: 0.022;
+  animation: tissuerift 90s linear infinite;
+  transition: opacity 0.6s ease;
+}
+@keyframes tissuerift {
+  to { background-position: 52px 30px; }
+}
+
+/* --- 1b. OVARIAN CANCER TEAL GLOW --- */
+body::after {
+  content: '';
+  position: fixed;
+  top: -160px;
+  right: -160px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,168,150,0.18) 0%, rgba(0,168,150,0.06) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.6s ease;
+}
+body.fluorescent::after {
+  background: radial-gradient(circle, rgba(0,210,185,0.15) 0%, rgba(0,210,185,0.05) 40%, transparent 70%);
+}
+
+/* --- 2. FLUORESCENT MODE --- */
+body.fluorescent {
+  --paper: #0E1117;
+  --ink: #E8F4F0;
+  --ink-soft: #5A7A6A;
+  --line: #1C2A24;
+  --card: #131D19;
+}
+body.fluorescent.section-journal    { --accent: #FF6B35; --accent-soft: rgba(255,107,53,.13); }
+body.fluorescent.section-literature { --accent: #D966FF; --accent-soft: rgba(217,102,255,.13); }
+body.fluorescent.section-models     { --accent: #FFD700; --accent-soft: rgba(255,215,0,.13); }
+body.fluorescent.section-community  { --accent: #66FF99; --accent-soft: rgba(102,255,153,.13); }
+body.fluorescent.section-history    { --accent: #00CCFF; --accent-soft: rgba(0,204,255,.13); }
+body.fluorescent.section-about      { --accent: #CC99FF; --accent-soft: rgba(204,153,255,.13); }
+body.fluorescent.section-charities  { --accent: #FF4FA0; --accent-soft: rgba(255,79,160,.13); }
+body.fluorescent:not([class*='section-']) { --accent: #00FFE5; --accent-soft: rgba(0,255,229,.13); }
+
+body.fluorescent::before {
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='60'%3E%3Cpath d='M26 2 L50 15 L50 45 L26 58 L2 45 L2 15 Z' fill='none' stroke='%2300FFE5' stroke-width='0.7'/%3E%3C/svg%3E");
+}
+
+/* fluorescent toggle */
+#fluor-toggle {
+  position: fixed; bottom: 24px; left: 24px; z-index: 300;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; padding: 5px 12px; border-radius: 20px;
+  cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: border-color .2s, color .2s, background .2s;
+}
+#fluor-toggle:hover { border-color: var(--accent); color: var(--accent); }
+body.fluorescent #fluor-toggle {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- 3. SUPERGRAPHIC --- */
+.page-hero { position: relative !important; overflow: hidden !important; }
+.supergraphic {
+  position: absolute;
+  right: -0.04em;
+  top: 50%;
+  transform: translateY(-52%);
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(96px, 21vw, 210px);
+  color: var(--ink);
+  opacity: 0.038;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+  transition: color .6s, opacity .6s;
+  white-space: nowrap;
+}
+body.fluorescent .supergraphic {
+  color: var(--accent);
+  opacity: 0.1;
+}
+
+/* --- 4. EXTREME TYPOGRAPHY --- */
+h1 {
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem) !important;
+  max-width: 18ch !important;
+  line-height: 1.04 !important;
+}
+
+/* large journal titles only on the journal page itself */
+body.section-journal .journal-title {
+  font-family: 'Fraunces', serif !important;
+  font-size: 1.75rem !important;
+  font-style: italic !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 7px !important;
+}
+body.section-journal .journal-date {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.1em !important;
+}
+body.section-journal .journal-item {
+  padding: 22px 0 !important;
+  gap: 18px !important;
+}
+
+/* --- 5. CELL DIVISION CARDS --- */
+.lit-card {
+  border-radius: 12px 22px 14px 20px / 20px 14px 22px 12px !important;
+  animation: cellbreathe 10s ease-in-out infinite;
+  transition: border-radius .9s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease !important;
+}
+.lit-card:hover {
+  border-radius: 22px 12px 20px 14px / 12px 22px 14px 20px !important;
+  transform: translateX(2px) scale(1.01) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07) !important;
+}
+.charity-card {
+  border-radius: 20px 12px 22px 14px / 14px 20px 12px 22px !important;
+  animation: cellbreathe2 13s ease-in-out infinite;
+  transition: border-radius .9s ease, border-color .25s ease, transform .25s ease !important;
+}
+.charity-card:hover {
+  border-radius: 12px 22px 14px 20px / 22px 12px 20px 14px !important;
+  transform: translateX(2px) !important;
+}
+@keyframes cellbreathe {
+  0%,100% { border-radius: 12px 22px 14px 20px / 20px 14px 22px 12px; }
+  25%     { border-radius: 22px 14px 20px 12px / 14px 22px 12px 20px; }
+  50%     { border-radius: 16px 20px 12px 22px / 22px 16px 20px 12px; }
+  75%     { border-radius: 20px 12px 22px 16px / 12px 20px 16px 22px; }
+}
+@keyframes cellbreathe2 {
+  0%,100% { border-radius: 20px 12px 22px 14px / 14px 20px 12px 22px; }
+  33%     { border-radius: 12px 22px 14px 20px / 20px 12px 22px 14px; }
+  66%     { border-radius: 22px 16px 12px 20px / 16px 22px 20px 12px; }
+}
+
+/* --- 6. PAGE TRANSITION MORPH --- */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) {
+  animation: .44s cubic-bezier(.4,0,1,1) morph-shrink both;
+}
+::view-transition-new(root) {
+  animation: .44s cubic-bezier(0,0,.2,1) morph-grow both;
+}
+@keyframes morph-shrink {
+  from { clip-path: circle(150% at 44px 50%); opacity: 1; }
+  to   { clip-path: circle(0%   at 44px 50%); opacity: 0; }
+}
+@keyframes morph-grow {
+  from { clip-path: circle(0%   at 44px 50%); opacity: 0; }
+  to   { clip-path: circle(150% at 44px 50%); opacity: 1; }
+}
+
+/* --- 7. LITERATURE NETWORK GRAPH --- */
+#lit-graph-container {
+  width: 100%; height: 480px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+}
+#lit-graph-canvas {
+  width: 100%; height: 100%;
+  display: block;
+  cursor: grab;
+}
+#lit-graph-canvas:active { cursor: grabbing; }
+.graph-note {
+  margin-top: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+.graph-tooltip {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 12px 14px;
+  max-width: 230px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+.graph-tooltip.visible { opacity: 1; }
+.gtt-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600; font-size: .9rem;
+  margin-bottom: 4px; color: var(--ink); line-height: 1.25;
+}
+.gtt-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .62rem; color: var(--ink-soft); margin-bottom: 8px;
+}
+.gtt-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.gtt-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem; padding: 2px 7px; border-radius: 10px;
+  border: 1px solid var(--accent); color: var(--accent); background: var(--accent-soft);
+}
+
+/* --- ALWAYS-VISIBLE NAV LABELS + WIDER RAIL --- */
+@media (min-width: 721px) {
+  .shell { grid-template-columns: 200px 1fr !important; }
+  .rail  { width: 200px !important; align-items: flex-start !important; padding-left: 50px !important; }
+  .rail-thread { justify-content: space-evenly !important; }
+  .bead { margin-bottom: 0 !important; }
+  .bead:last-child { margin-bottom: 0 !important; }
+  .bead-label {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.01em !important;
+  }
+  .bead-wrap:hover .bead-label {
+    transform: translateY(-50%) !important;
+  }
+  .container { max-width: 1100px !important; padding: 0 40px !important; }
+}
+
+/* --- REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none !important; }
+  lit-card, .charity-card { animation: none !important; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none !important; }
+}

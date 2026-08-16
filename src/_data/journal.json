@@ -1,0 +1,27 @@
+[
+  {
+    "date": "JUL 2026",
+    "title": "Reading TCGA-OV survival models again",
+    "excerpt": "Revisiting Cox models vs. deep survival nets on the same cohort — trying to understand why the gains are so marginal."
+  },
+  {
+    "date": "JUN 2026",
+    "title": "First pass at a literature map",
+    "excerpt": "Built a rough graph of citation clusters across subtype-specific ML papers. HGSOC dominates, unsurprisingly."
+  },
+  {
+    "date": "JUN 2026",
+    "title": "CA-125 as a noisy label",
+    "excerpt": "Spent the week annotating trial data and kept running into the same problem — the marker everyone treats as ground truth is anything but."
+  },
+  {
+    "date": "MAY 2026",
+    "title": "Why I'm starting this site",
+    "excerpt": "Notes on where the research trail and the personal trail started to run parallel."
+  },
+  {
+    "date": "APR 2026",
+    "title": "Six months in",
+    "excerpt": "A short reflection on what's changed since diagnosis, and what hasn't."
+  }
+]

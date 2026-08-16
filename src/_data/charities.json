@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "title": "Research & advocacy",
+      "note": "UK & international",
+      "items": [
+        {
+          "name": "Target Ovarian Cancer",
+          "tag": "UK · research · early detection",
+          "desc": "Funds research into earlier diagnosis and better treatments, and provides information and support to patients across the UK.",
+          "href": "#"
+        },
+        {
+          "name": "The Eve Appeal",
+          "tag": "UK · gynecological cancers · research",
+          "desc": "The only UK charity funding research into all five gynecological cancers, with a focus on early detection and raising awareness.",
+          "href": "#"
+        },
+        {
+          "name": "Ovarian Cancer Research Alliance (OCRA)",
+          "tag": "US · research funding · advocacy",
+          "desc": "The largest funder of ovarian cancer research in the US, supporting scientists working toward better treatments and a cure.",
+          "href": "#"
+        },
+        {
+          "name": "Ovarian Cancer Action",
+          "tag": "UK · research · patient support",
+          "desc": "Campaigns for better outcomes through research funding, policy work, and connecting patients with the resources they need.",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "title": "Patient support",
+      "note": "direct help",
+      "items": [
+        {
+          "name": "Ovacome",
+          "tag": "UK · patient support · information",
+          "desc": "Provides specialist ovarian cancer information and a support network for patients, carers, and healthcare professionals.",
+          "href": "#"
+        },
+        {
+          "name": "Cancer Research UK",
+          "tag": "UK · broad oncology · research",
+          "desc": "The world's largest independent cancer research organization — funds work across all cancer types including ovarian.",
+          "href": "#"
+        }
+      ]
+    }
+  ],
+  "givingNote": "All charities listed here have been chosen because they direct a meaningful proportion of donations toward research or direct patient support. Links above go to their official sites — check their annual reports if you want to verify impact before donating."
+}

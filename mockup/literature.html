@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Literature — ATOLL</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper: #FBFAF5;
+  --ink: #22302A;
+  --ink-soft: #566159;
+  --line: #E3DECF;
+  --card: #FFFFFF;
+  --accent: #1E8A7E;
+  --accent-soft: rgba(30,138,126,0.08);
+}
+
+body.section-journal    { --accent:#D9754F; --accent-soft:rgba(217,117,79,0.09); }
+body.section-literature { --accent:#6E4C63; --accent-soft:rgba(110,76,99,0.09); }
+body.section-models     { --accent:#B87627; --accent-soft:rgba(184,118,39,0.09); }
+body.section-community  { --accent:#5E8351; --accent-soft:rgba(94,131,81,0.09); }
+body.section-history    { --accent:#2E6F8E; --accent-soft:rgba(46,111,142,0.09); }
+body.section-about      { --accent:#8A6A9E; --accent-soft:rgba(138,106,158,0.09); }
+body.section-charities  { --accent:#B84B6B; --accent-soft:rgba(184,75,107,0.09); }
+
+@view-transition{ navigation: auto; }
+
+::view-transition-old(root),
+::view-transition-new(root){ animation-duration: 0.45s; }
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{color-scheme:light; scroll-behavior:smooth;}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter', sans-serif;
+  line-height:1.55;
+  min-height:100vh;
+}
+
+a, a:link, a:visited{color:inherit; text-decoration:none;}
+
+.serif{font-family:'Fraunces', serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+
+/* ---------- layout shell ---------- */
+.shell{
+  display:grid;
+  grid-template-columns: 88px 1fr;
+  min-height:100vh;
+}
+
+/* ---------- thread rail (signature nav) ---------- */
+.rail{
+  position:sticky; top:0; height:100vh;
+  border-right:1px solid var(--line);
+  display:flex; flex-direction:column; align-items:center;
+  padding:28px 0;
+  background:var(--paper);
+  view-transition-name: rail;
+}
+.rail-brand{
+  writing-mode:vertical-rl; text-orientation:mixed;
+  font-family:'Fraunces', serif; font-weight:600; font-size:0.95rem;
+  letter-spacing:0.02em; margin-bottom:36px;
+  view-transition-name: brand-mark;
+}
+.rail-thread{
+  position:relative; flex:1; width:2px;
+  background:repeating-linear-gradient(to bottom, var(--line) 0 4px, transparent 4px 9px);
+  display:flex; flex-direction:column; align-items:center;
+  gap:0;
+}
+.bead{
+  position:relative; width:12px; height:12px; border-radius:50%;
+  background:var(--card); border:2px solid var(--line);
+  margin-bottom:64px; transition:transform 0.25s ease, border-color 0.25s ease;
+}
+.bead:last-child{ margin-bottom:0; }
+.bead.active{ border-color:var(--accent); transform:scale(1.35); box-shadow:0 0 0 5px var(--accent-soft); }
+.bead-label{
+  position:absolute; left:20px; top:50%; transform:translateY(-50%);
+  font-family:'IBM Plex Mono', monospace; font-size:0.62rem;
+  color:var(--ink-soft); white-space:nowrap; opacity:0;
+  transition:opacity 0.2s ease, transform 0.2s ease;
+  pointer-events:none;
+}
+.bead-wrap{position:relative; display:flex; align-items:center;}
+.bead-wrap:hover .bead-label{ opacity:1; transform:translateY(-50%) translateX(4px); }
+.bead-wrap:hover .bead{ border-color:var(--accent); }
+
+/* ---------- main content ---------- */
+main{ padding:0 0 80px; }
+.container{ max-width:720px; margin:0 auto; padding:0 32px; }
+
+.topline{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:26px 32px; border-bottom:1px solid var(--line);
+}
+.crumb{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink-soft); letter-spacing:0.02em; }
+.crumb b{ color:var(--accent); }
+.next-link{
+  font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink);
+  display:flex; align-items:center; gap:6px;
+}
+.next-link .arr{ color:var(--accent); transition:transform 0.2s ease; }
+.next-link:hover .arr{ transform:translateX(4px); }
+
+/* ---------- hero ---------- */
+.page-hero{ padding:56px 0 40px; view-transition-name: hero; }
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace; font-size:0.7rem;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:16px; display:flex; align-items:center; gap:8px;
+}
+.eyebrow::before{ content:''; width:22px; height:1px; background:var(--accent); }
+h1{
+  font-family:'Fraunces', serif; font-weight:600; font-optical-sizing:auto;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; max-width:14ch;
+}
+h1 em{ font-style:italic; color:var(--accent); }
+.lede{ margin-top:16px; max-width:48ch; font-size:1rem; color:var(--ink-soft); }
+
+/* ---------- entrance animation ---------- */
+@keyframes rise{
+  from{ opacity:0; transform:translateY(14px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.rise{ animation:rise 0.6s cubic-bezier(.2,.7,.3,1) both; }
+.rise-1{ animation-delay:0.05s; }
+.rise-2{ animation-delay:0.12s; }
+.rise-3{ animation-delay:0.19s; }
+.rise-4{ animation-delay:0.26s; }
+.rise-5{ animation-delay:0.33s; }
+
+/* ---------- section blocks ---------- */
+section{ padding:36px 0; border-top:1px solid var(--line); }
+.section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; }
+.section-title{ font-family:'Fraunces', serif; font-size:1.3rem; font-weight:600; }
+.section-note{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:#8b8f7f; }
+
+/* ---------- journal ---------- */
+.journal-item{ display:flex; gap:16px; padding:16px 0; position:relative; }
+.journal-item::before{ content:''; position:absolute; left:5px; top:0; bottom:0; width:1px; background:var(--line); }
+.journal-item:first-child::before{ top:22px; }
+.journal-item:last-child::before{ bottom:calc(100% - 22px); }
+.stitch{
+  width:11px; height:11px; border-radius:50%; background:var(--card);
+  border:2px solid var(--accent); flex-shrink:0; margin-top:6px; z-index:1;
+}
+.journal-date{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--accent); margin-bottom:3px; }
+.journal-title{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; margin-bottom:5px; }
+.journal-excerpt{ font-size:0.9rem; color:var(--ink-soft); }
+
+/* ---------- literature ---------- */
+.lit-card{
+  background:var(--card); border:1px solid var(--line); border-radius:4px;
+  padding:18px 20px; margin-bottom:12px; transition:border-color 0.2s ease, transform 0.2s ease;
+}
+.lit-card:hover{ border-color:var(--accent); transform:translateX(3px); }
+.lit-title{ font-family:'Fraunces', serif; font-size:1rem; font-weight:600; max-width:36ch; }
+.lit-meta{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:#7b8078; margin-top:5px; }
+.tags{ display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+.tag{
+  font-family:'IBM Plex Mono', monospace; font-size:0.65rem; padding:3px 9px; border-radius:20px;
+  border:1px solid var(--accent); color:var(--accent); background:var(--accent-soft);
+}
+
+/* ---------- models ---------- */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.model-card{
+  background:var(--card); border:1px solid var(--line); border-radius:4px; padding:16px;
+  transition:box-shadow 0.2s ease;
+}
+.model-card:hover{ box-shadow:0 6px 18px rgba(0,0,0,0.05); }
+.model-name{ font-family:'Fraunces', serif; font-weight:600; font-size:0.95rem; margin-bottom:8px; }
+.model-row{ display:flex; justify-content:space-between; font-size:0.76rem; color:var(--ink-soft); margin-top:5px; }
+.model-row b{ color:var(--ink); font-family:'IBM Plex Mono', monospace; font-weight:500; }
+
+/* ---------- community ---------- */
+.community-item{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 0; border-bottom:1px dashed var(--line); transition:padding-left 0.2s ease;
+}
+.community-item:hover{ padding-left:6px; }
+.community-item:last-child{ border-bottom:none; }
+.community-name{ font-weight:500; font-size:0.94rem; }
+.community-type{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--accent); }
+.arrow{ color:var(--accent); font-size:1rem; }
+
+.map-box{
+  margin-top:20px; height:170px; border:1px solid var(--line); border-radius:4px;
+  background:
+    radial-gradient(circle at 30% 40%, var(--accent-soft) 0, transparent 45%),
+    linear-gradient(135deg, #EFECDF 25%, #F6F4E9 25%, #F6F4E9 50%, #EFECDF 50%, #EFECDF 75%, #F6F4E9 75%);
+  background-size: 100% 100%, 16px 16px;
+  position:relative; display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--ink-soft);
+}
+.map-pin{ position:absolute; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px var(--accent-soft); }
+
+footer{
+  padding:44px 32px 20px; text-align:center;
+  font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#8b8f7f;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 720px){
+  .shell{ grid-template-columns:1fr; }
+  .rail{
+    position:sticky; top:0; height:auto; width:100%;
+    flex-direction:row; border-right:none; border-bottom:1px solid var(--line);
+    padding:14px 20px; z-index:5;
+  }
+  .rail-brand{ writing-mode:horizontal-tb; margin-bottom:0; margin-right:20px; font-size:0.85rem; }
+  .rail-thread{
+    flex-direction:row; width:auto; height:2px; flex:1;
+    background:repeating-linear-gradient(to right, var(--line) 0 4px, transparent 4px 9px);
+    align-items:center;
+  }
+  .bead-wrap{ margin-right:22px; }
+  .bead{ margin-bottom:0; }
+  .bead-label{ display:none; }
+  .grid2{ grid-template-columns:1fr; }
+  h1{ font-size:1.9rem; }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .rise{ animation:none; }
+  *{ scroll-behavior:auto !important; }
+  ::view-transition-old(root), ::view-transition-new(root){ animation:none !important; }
+}
+
+/* ---------- paper table ---------- */
+.paper-table-wrap{ overflow-x:auto; }
+.paper-table{ width:100%; border-collapse:collapse; font-size:0.82rem; }
+.paper-table th{
+  font-family:'IBM Plex Mono',monospace; font-size:0.6rem; font-weight:500;
+  color:var(--ink-soft); letter-spacing:0.05em; text-transform:uppercase;
+  padding:9px 12px; border-bottom:2px solid var(--line); text-align:left; white-space:nowrap;
+}
+.paper-table th.sortable{ cursor:pointer; user-select:none; transition:color .15s; }
+.paper-table th.sortable:hover{ color:var(--accent); }
+.paper-table th.sorted{ color:var(--accent); }
+.sort-arr{ font-size:0.55rem; margin-left:3px; opacity:0.5; }
+.paper-table td{ padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+.paper-table tbody tr{ transition:background .15s; }
+.paper-table tbody tr:hover{ background:var(--accent-soft); }
+.pt-title{ font-family:'Fraunces',serif; font-weight:600; font-size:0.88rem; line-height:1.3; }
+.pt-author,.pt-year{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; white-space:nowrap; }
+.pt-year{ color:var(--accent); }
+.pt-author{ color:var(--ink-soft); }
+.pt-topic{ font-size:0.78rem; color:var(--ink-soft); }
+.pt-journal{ font-size:0.78rem; font-style:italic; color:var(--ink-soft); }
+.pt-tags{ display:flex; flex-wrap:wrap; gap:4px; }
+.pt-tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.57rem; padding:2px 7px;
+  border-radius:10px; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;
+}
+
+</style>
+</head>
+<body class="section-literature">
+<div class="shell">
+
+  <nav class="rail">
+    <div class="rail-brand">ATOLL</div>
+    <div class="rail-thread">
+      <a href="index.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">Home</span></a>
+      <a href="history.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">History</span></a>
+      <a href="journal.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">Journal</span></a>
+      <div class="bead-wrap"><div class="bead active"></div><a class="bead-label" href="literature.html">Literature</a></div>
+      <a href="models.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">Models</span></a>
+      <a href="community.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">Community</span></a>
+      <a href="charities.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">Charities</span></a>
+      <a href="about.html" class="bead-wrap"><div class="bead"></div><span class="bead-label">About</span></a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topline">
+      <div class="crumb">ATOLL / <b>Literature</b></div>
+      <a href="models.html" class="next-link">Models &amp; Data <span class="arr">→</span></a>
+    </div>
+    <div class="container">
+
+      <header class="page-hero">
+        <div class="supergraphic">142</div>
+        <div class="eyebrow rise rise-1">142 papers</div>
+        <h1 class="rise rise-2">The <em>literature</em>.</h1>
+        <p class="lede rise rise-3">Key papers, tagged by subtype and by how they connect to machine learning — kept as a working reference, not a static bibliography.</p>
+      </header>
+
+      <section class="rise rise-4">
+        <div class="section-head">
+          <div class="section-title">Paper network</div>
+          <div class="section-note mono">drag nodes · hover for details</div>
+        </div>
+        <div id="lit-graph-container">
+          <canvas id="lit-graph-canvas"></canvas>
+          <div class="graph-tooltip" id="graph-tooltip"></div>
+        </div>
+        <p class="graph-note">Node size reflects tag count. Lines connect papers sharing tags. Thickness = shared tags.</p>
+      </section>
+<script>
+(function(){
+  var canvas = document.getElementById('lit-graph-canvas');
+  var tip    = document.getElementById('graph-tooltip');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var container = canvas.parentElement;
+
+  var papers = [
+    {id:0, title:'Deep learning survival prediction in HGSOC', meta:'Smith et al. · Nature Digital Medicine · 2025', tags:['HGSOC','deep survival','TCGA-OV']},
+    {id:1, title:'Radiomics-based response to platinum chemotherapy', meta:'Chen et al. · JCO CCI · 2024', tags:['chemo response','radiomics']},
+    {id:2, title:'Multi-omic clustering: four ovarian cancer subtypes', meta:'Verhaak et al. · Cancer Cell · 2013', tags:['subtyping','multi-omics','TCGA-OV']},
+    {id:3, title:'Federated learning for rare cancer cohorts', meta:'Okafor et al. · npj Digital Medicine · 2025', tags:['federated learning','rare cohort']},
+    {id:4, title:'CA-125 as a noisy biomarker: a critical review', meta:'Patel et al. · Lancet Oncology · 2023', tags:['CA-125','biomarker','HGSOC']},
+    {id:5, title:'BRCA mutation status and PARP inhibitor response', meta:'Liu et al. · NEJM · 2019', tags:['BRCA','PARP inhibitor','treatment']},
+    {id:6, title:'Single-cell transcriptomics of HGSOC progression', meta:'Zhang et al. · Nature Cancer · 2024', tags:['HGSOC','single-cell','subtyping']},
+    {id:7, title:'Transfer learning for small ovarian cancer datasets', meta:'Müller et al. · Med. Image Analysis · 2024', tags:['transfer learning','deep learning','TCGA-OV']},
+    {id:8, title:'Histopathology AI for ovarian subtype classification', meta:'Kather et al. · Lancet Digital Health · 2023', tags:['histology','subtyping','deep learning']},
+    {id:9, title:'Platinum resistance mechanisms in recurrent HGSOC', meta:'Rosen et al. · Cancer Research · 2022', tags:['HGSOC','chemo response','treatment']},
+    {id:10,title:'Ovarian cancer early detection: multi-marker serum panel', meta:'Moore et al. · Cancer Prevention Research · 2023', tags:['CA-125','biomarker','early detection']},
+  ];
+
+  var links = [];
+  for(var i=0;i<papers.length;i++){
+    for(var j=i+1;j<papers.length;j++){
+      var shared = papers[i].tags.filter(function(t){return papers[j].tags.indexOf(t)>=0;});
+      if(shared.length) links.push({s:i,t:j,w:shared.length});
+    }
+  }
+
+  function resize(){
+    var W = container.offsetWidth, H = 480;
+    var dpr = window.devicePixelRatio||1;
+    canvas.width  = W*dpr; canvas.height = H*dpr;
+    canvas.style.width  = W+'px'; canvas.style.height = H+'px';
+    ctx.scale(dpr,dpr);
+    return {W:W,H:H};
+  }
+
+  var dim = resize();
+  var W=dim.W, H=dim.H;
+
+  var nodes = papers.map(function(p,i){
+    var angle = (i/papers.length)*Math.PI*2;
+    var r = Math.min(W,H)*0.3;
+    return {
+      id:p.id, title:p.title, meta:p.meta, tags:p.tags,
+      x: W/2 + r*Math.cos(angle) + (Math.random()-.5)*40,
+      y: H/2 + r*Math.sin(angle) + (Math.random()-.5)*40,
+      vx:0, vy:0,
+      r: 11 + p.tags.length*3.5
+    };
+  });
+
+  function cssVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function tick(){
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[j].x-nodes[i].x, dy=nodes[j].y-nodes[i].y;
+        var d=Math.sqrt(dx*dx+dy*dy)||1;
+        var f=2200/(d*d);
+        nodes[i].vx-=f*dx/d; nodes[i].vy-=f*dy/d;
+        nodes[j].vx+=f*dx/d; nodes[j].vy+=f*dy/d;
+      }
+    }
+    for(var k=0;k<links.length;k++){
+      var a=nodes[links[k].s], b=nodes[links[k].t];
+      var dx=b.x-a.x, dy=b.y-a.y;
+      var d=Math.sqrt(dx*dx+dy*dy)||1;
+      var tgt=130, f=(d-tgt)*0.028*links[k].w;
+      a.vx+=f*dx/d; a.vy+=f*dy/d;
+      b.vx-=f*dx/d; b.vy-=f*dy/d;
+    }
+    for(var n=0;n<nodes.length;n++){
+      nodes[n].vx+=(W/2-nodes[n].x)*0.008;
+      nodes[n].vy+=(H/2-nodes[n].y)*0.008;
+      nodes[n].vx*=0.85; nodes[n].vy*=0.85;
+      nodes[n].x+=nodes[n].vx; nodes[n].y+=nodes[n].vy;
+      nodes[n].x=Math.max(nodes[n].r+6,Math.min(W-nodes[n].r-6,nodes[n].x));
+      nodes[n].y=Math.max(nodes[n].r+6,Math.min(H-nodes[n].r-6,nodes[n].y));
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var accent = cssVar('--accent') || '#6E4C63';
+    var ink    = cssVar('--ink')    || '#22302A';
+
+    for(var k=0;k<links.length;k++){
+      var a=nodes[links[k].s], b=nodes[links[k].t];
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle = accent+'44';
+      ctx.lineWidth = links[k].w;
+      ctx.stroke();
+    }
+    for(var n=0;n<nodes.length;n++){
+      var nd=nodes[n];
+      ctx.beginPath(); ctx.arc(nd.x,nd.y,nd.r,0,Math.PI*2);
+      ctx.fillStyle = accent+'1A'; ctx.fill();
+      ctx.strokeStyle = accent; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.fillStyle = ink;
+      ctx.font = 'italic 500 '+(Math.max(8,nd.r*0.5))+'px Fraunces, serif';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      var words=nd.title.split(' ');
+      ctx.fillText(words.slice(0,2).join(' '), nd.x, nd.y-(nd.r>16?.5:0));
+      if(nd.r>14 && words.length>2){
+        ctx.font='500 '+(Math.max(7,nd.r*0.42))+'px Inter,sans-serif';
+        ctx.fillText(words.slice(2,4).join(' '), nd.x, nd.y+(nd.r*0.55));
+      }
+    }
+  }
+
+  var frame=0;
+  function loop(){
+    tick(); draw(); frame++;
+    if(frame<280) requestAnimationFrame(loop);
+    else setTimeout(function(){ frame=265; requestAnimationFrame(loop); },60);
+  }
+  loop();
+
+  // hover
+  canvas.addEventListener('mousemove', function(e){
+    var rect=canvas.getBoundingClientRect();
+    var x=e.clientX-rect.left, y=e.clientY-rect.top;
+    var hit=null;
+    for(var n=0;n<nodes.length;n++){
+      if(Math.hypot(x-nodes[n].x,y-nodes[n].y)<nodes[n].r+4){hit=nodes[n];break;}
+    }
+    if(hit){
+      tip.innerHTML='<div class="gtt-title">'+hit.title+'</div><div class="gtt-meta">'+hit.meta+'</div><div class="gtt-tags">'+hit.tags.map(function(t){return'<span class="gtt-tag">'+t+'</span>';}).join('')+'</div>';
+      tip.classList.add('visible');
+      var tx=x+16, ty=y-14;
+      if(tx+240>W) tx=x-256;
+      if(ty<0) ty=4;
+      tip.style.left=tx+'px'; tip.style.top=ty+'px';
+      canvas.style.cursor='pointer';
+    } else {
+      tip.classList.remove('visible');
+      canvas.style.cursor='grab';
+    }
+  });
+  canvas.addEventListener('mouseleave',function(){tip.classList.remove('visible');});
+
+  // drag
+  var dragging=null, ox=0, oy=0;
+  canvas.addEventListener('mousedown',function(e){
+    var rect=canvas.getBoundingClientRect();
+    var x=e.clientX-rect.left, y=e.clientY-rect.top;
+    for(var n=0;n<nodes.length;n++){
+      if(Math.hypot(x-nodes[n].x,y-nodes[n].y)<nodes[n].r+4){
+        dragging=nodes[n]; ox=x-nodes[n].x; oy=y-nodes[n].y; break;
+      }
+    }
+  });
+  canvas.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var rect=canvas.getBoundingClientRect();
+    dragging.x=e.clientX-rect.left-ox;
+    dragging.y=e.clientY-rect.top-oy;
+    dragging.vx=0; dragging.vy=0;
+  });
+  canvas.addEventListener('mouseup',function(){dragging=null;});
+
+  // redraw on fluorescent toggle
+  var obs=new MutationObserver(function(){draw();});
+  obs.observe(document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script>
+
+      <section class="rise rise-5">
+        <div class="section-head">
+          <div class="section-title">All papers</div>
+          <div class="section-note mono" id="paper-count"></div>
+        </div>
+        <div class="paper-table-wrap">
+          <table class="paper-table" id="paper-table">
+            <thead>
+              <tr>
+                <th data-col="title" class="sortable">Title <span class="sort-arr">↕</span></th>
+                <th data-col="author" class="sortable">Author <span class="sort-arr">↕</span></th>
+                <th data-col="year" class="sortable">Year <span class="sort-arr">↓</span></th>
+                <th data-col="topic" class="sortable">Topic <span class="sort-arr">↕</span></th>
+                <th data-col="journal" class="sortable">Journal <span class="sort-arr">↕</span></th>
+                <th data-col="country" class="sortable">Country <span class="sort-arr">↕</span></th>
+                <th data-col="tags">Tags</th>
+              </tr>
+            </thead>
+            <tbody id="paper-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+<script>
+(function(){
+  var data=[
+    {title:'Deep learning survival prediction in HGSOC',           author:'Smith et al.',   year:2025, topic:'Deep Learning',           journal:'Nature Digital Medicine',    country:'USA',     tags:['HGSOC','deep survival','TCGA-OV']},
+    {title:'Radiomics-based response to platinum chemotherapy',    author:'Chen et al.',    year:2024, topic:'Radiomics',               journal:'JCO CCI',                    country:'USA',     tags:['chemo response','radiomics']},
+    {title:'Multi-omic clustering: four ovarian cancer subtypes',  author:'Verhaak et al.',year:2013, topic:'Molecular Subtyping',      journal:'Cancer Cell',                country:'USA',     tags:['subtyping','multi-omics','TCGA-OV']},
+    {title:'Federated learning for rare cancer cohorts',           author:'Okafor et al.', year:2025, topic:'Federated Learning',       journal:'npj Digital Medicine',       country:'Nigeria', tags:['federated learning','rare cohort']},
+    {title:'CA-125 as a noisy biomarker: a critical review',       author:'Patel et al.',  year:2023, topic:'Biomarkers',              journal:'Lancet Oncology',            country:'UK',      tags:['CA-125','biomarker','HGSOC']},
+    {title:'BRCA mutation status and PARP inhibitor response',     author:'Liu et al.',    year:2019, topic:'Genetics / Treatment',    journal:'NEJM',                       country:'USA',     tags:['BRCA','PARP inhibitor','treatment']},
+    {title:'Single-cell transcriptomics of HGSOC progression',    author:'Zhang et al.',  year:2024, topic:'Transcriptomics',         journal:'Nature Cancer',              country:'China',   tags:['HGSOC','single-cell','subtyping']},
+    {title:'Transfer learning for small ovarian cancer datasets',  author:'Müller et al.', year:2024, topic:'Transfer Learning',       journal:'Med. Image Analysis',        country:'Germany', tags:['transfer learning','deep learning','TCGA-OV']},
+    {title:'Histopathology AI for ovarian subtype classification', author:'Kather et al.', year:2023, topic:'Computational Pathology', journal:'Lancet Digital Health',      country:'Germany', tags:['histology','subtyping','deep learning']},
+    {title:'Platinum resistance mechanisms in recurrent HGSOC',    author:'Rosen et al.',  year:2022, topic:'Treatment Resistance',    journal:'Cancer Research',            country:'USA',     tags:['HGSOC','chemo response','treatment']},
+    {title:'Ovarian cancer early detection: multi-marker serum panel', author:'Moore et al.', year:2023, topic:'Early Detection',     journal:'Cancer Prevention Research', country:'UK',      tags:['CA-125','biomarker','early detection']}
+  ];
+
+  var sort={col:'year',dir:-1};
+
+  function render(){
+    var rows=data.slice().sort(function(a,b){
+      var av=sort.col==='tags'?a.tags.join():a[sort.col];
+      var bv=sort.col==='tags'?b.tags.join():b[sort.col];
+      if(av<bv)return sort.dir; if(av>bv)return -sort.dir; return 0;
+    });
+    document.getElementById('paper-tbody').innerHTML=rows.map(function(p){
+      return '<tr>'+
+        '<td><div class="pt-title">'+p.title+'</div></td>'+
+        '<td class="pt-author">'+p.author+'</td>'+
+        '<td class="pt-year">'+p.year+'</td>'+
+        '<td class="pt-topic">'+p.topic+'</td>'+
+        '<td class="pt-journal">'+p.journal+'</td>'+
+        '<td class="pt-topic">'+p.country+'</td>'+
+        '<td><div class="pt-tags">'+p.tags.map(function(t){return'<span class="pt-tag">'+t+'</span>';}).join('')+'</div></td>'+
+        '</tr>';
+    }).join('');
+  }
+
+  document.getElementById('paper-count').textContent=data.length+' entries';
+
+  document.querySelectorAll('#paper-table th.sortable').forEach(function(th){
+    th.addEventListener('click',function(){
+      var col=th.dataset.col;
+      if(sort.col===col){sort.dir*=-1;}else{sort.col=col;sort.dir=1;}
+      document.querySelectorAll('#paper-table th.sortable').forEach(function(h){
+        h.classList.remove('sorted');
+        h.querySelector('.sort-arr').textContent='↕';
+      });
+      th.classList.add('sorted');
+      th.querySelector('.sort-arr').textContent=sort.dir===1?'↑':'↓';
+      render();
+    });
+  });
+
+  document.querySelector('#paper-table th[data-col="year"]').classList.add('sorted');
+  render();
+})();
+</script>
+
+    </div>
+    <footer>Built entry by entry — last updated Jul 2026</footer>
+  </main>
+</div>
+<link rel="stylesheet" href="design.css">
+<button id="fluor-toggle" onclick="var on=document.body.classList.toggle('fluorescent');localStorage.setItem('atoll-fluor',on?'1':'')">⚗ fluor</button>
+<style>
+#widget-btn{position:fixed;bottom:24px;right:24px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:transform .2s,background .2s;border:none;font-size:1.1rem;}
+#widget-btn:hover{transform:scale(1.08);background:var(--accent);}
+#widget-panel{position:fixed;bottom:78px;right:24px;z-index:200;width:300px;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:none;flex-direction:column;overflow:hidden;}
+#widget-panel.open{display:flex;}
+.widget-tabs{display:flex;border-bottom:1px solid var(--line);}
+.wtab{flex:1;padding:10px;border:none;background:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-soft);border-bottom:2px solid transparent;transition:color .2s,background .2s;}
+.wtab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--accent-soft);}
+.widget-body{padding:16px;}
+.widget-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.03em;}
+.widget-input,.widget-textarea{width:100%;border:1px solid var(--line);border-radius:4px;padding:7px 10px;font-family:'Inter',sans-serif;font-size:.84rem;background:var(--paper);color:var(--ink);margin-bottom:10px;}
+.widget-input:focus,.widget-textarea:focus{outline:none;border-color:var(--accent);}
+.widget-textarea{resize:vertical;min-height:72px;}
+.widget-submit{width:100%;padding:9px;border:none;border-radius:4px;background:var(--accent);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.7rem;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;}
+.widget-submit:hover{opacity:.85;}
+.widget-success{display:none;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--accent);padding:10px 0;}
+.chat-area{margin-bottom:10px;}
+.chat-sender{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--ink-soft);margin-bottom:4px;}
+.chat-msg{display:inline-block;background:var(--accent-soft);border:1px solid var(--line);border-radius:6px;padding:9px 12px;font-size:.87rem;color:var(--ink);max-width:85%;}
+</style>
+<button id="widget-btn" onclick="toggleWidget()" aria-label="Open panel">✦</button>
+<div id="widget-panel">
+  <div class="widget-tabs">
+    <button class="wtab active" data-tab="feedback" onclick="switchTab('feedback')">Feedback</button>
+    <button class="wtab" data-tab="ask" onclick="switchTab('ask')">Ask</button>
+  </div>
+  <div class="widget-body">
+    <div id="wtab-feedback" class="widget-tab-body">
+      <form id="feedback-form" onsubmit="submitFeedback(event)">
+        <label class="widget-label">Name</label>
+        <input class="widget-input" type="text" placeholder="anonymous">
+        <label class="widget-label">Email</label>
+        <input class="widget-input" type="email" placeholder="none">
+        <label class="widget-label">Message</label>
+        <textarea class="widget-textarea" required placeholder="What's on your mind?"></textarea>
+        <button class="widget-submit" type="submit">Send feedback →</button>
+      </form>
+      <div id="feedback-success" class="widget-success">Thank you — message received.</div>
+    </div>
+    <div id="wtab-ask" class="widget-tab-body" style="display:none">
+      <div class="chat-area">
+        <div class="chat-sender">ATOLL</div>
+        <div class="chat-msg">Hi</div>
+      </div>
+      <input class="widget-input" type="text" placeholder="Ask me anything…" style="margin-bottom:0">
+    </div>
+  </div>
+</div>
+<script>
+if(localStorage.getItem('atoll-fluor'))document.body.classList.add('fluorescent');
+function toggleWidget(){document.getElementById('widget-panel').classList.toggle('open');}
+function switchTab(tab){
+  document.querySelectorAll('.wtab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.widget-tab-body').forEach(function(t){t.style.display='none';});
+  document.querySelector('.wtab[data-tab="'+tab+'"]').classList.add('active');
+  document.getElementById('wtab-'+tab).style.display='block';
+}
+function submitFeedback(e){
+  e.preventDefault();
+  document.getElementById('feedback-form').style.display='none';
+  document.getElementById('feedback-success').style.display='block';
+}
+</script>
+</body>
+</html>

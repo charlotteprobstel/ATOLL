@@ -1,0 +1,13 @@
+{
+  "name": "atoll",
+  "version": "1.0.0",
+  "description": "ATOLL — AI Tools for Ovarian Lesion Localisation. A patient-researcher's notebook on ovarian cancer and machine learning.",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

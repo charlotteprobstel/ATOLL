@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+permalink: charities.html
+navKey: charities
+section: charities
+crumb: Charities
+title: Charities
+nextHref: index.html
+nextLabel: Back to Home
+description: Organizations raising money for research, supporting patients, and pushing for earlier diagnosis.
+---
+<header class="page-hero">
+  <div class="supergraphic">{{ site.stats.charities }}</div>
+  <div class="eyebrow rise rise-1">funding &amp; support</div>
+  <h1 class="rise rise-2">The <em>charities</em>.</h1>
+  <p class="lede rise rise-3">Organizations raising money for research, supporting patients, and pushing for earlier diagnosis — where donations make a measurable difference.</p>
+</header>
+
+{% for group in charities.groups %}
+<section class="rise rise-{{ loop.index + 3 }}">
+  <div class="section-head">
+    <div class="section-title">{{ group.title }}</div>
+    <div class="section-note mono">{{ group.note }}</div>
+  </div>
+
+  {% for item in group.items %}
+  <a href="{{ item.href }}" class="charity-card">
+    <div>
+      <div class="charity-name">{{ item.name }}</div>
+      <div class="charity-tag">{{ item.tag }}</div>
+      <div class="charity-desc">{{ item.desc }}</div>
+    </div>
+    <div class="charity-arrow">↗</div>
+  </a>
+  {% endfor %}
+
+  {% if loop.last %}
+  <div class="giving-note">
+    <strong>A note on giving.</strong> {{ charities.givingNote }}
+  </div>
+  {% endif %}
+</section>
+{% endfor %}

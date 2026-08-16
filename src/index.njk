@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+navKey: home
+crumb: Home
+description: A patient-researcher's living notebook on ovarian cancer and machine learning.
+---
+<header class="page-hero">
+  <div class="supergraphic">2026</div>
+  <div class="eyebrow rise rise-1">A patient-researcher's notebook</div>
+  <h1 class="rise rise-2">Tracing ovarian cancer, one <em>data point</em> at a time.</h1>
+  <p class="lede rise rise-3">A living record of the papers I've read, the models I've built, and the people I've found along the way — where oncology and machine learning meet.</p>
+</header>
+
+<section class="rise rise-4">
+  <div class="section-head">
+    <div class="section-title">Latest entry</div>
+    <div class="section-note mono">journal</div>
+  </div>
+  {% set latest = journal[0] %}
+  <div class="journal-item">
+    <div class="stitch"></div>
+    <div>
+      <div class="journal-date">{{ latest.date }}</div>
+      <div class="journal-title">{{ latest.title }}</div>
+      <div class="journal-excerpt">{{ latest.excerpt }}</div>
+    </div>
+  </div>
+  <a href="journal.html" class="next-link" style="margin-top:8px; display:inline-flex;">Read the full journal <span class="arr">→</span></a>
+</section>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">Around the site</div>
+  </div>
+  <div class="grid2">
+    <a href="literature.html" class="model-card">
+      <div class="model-name" style="color:#6E4C63;">Literature</div>
+      <div class="model-row">{{ site.stats.papers }} papers logged</div>
+      <div class="model-row">tagged by subtype + ML</div>
+    </a>
+    <a href="models.html" class="model-card">
+      <div class="model-name" style="color:#B87627;">Models &amp; Data</div>
+      <div class="model-row">{{ site.stats.models }} models tracked</div>
+      <div class="model-row">{{ site.stats.datasets }} linked datasets</div>
+    </a>
+    <a href="community.html" class="model-card">
+      <div class="model-name" style="color:#5E8351;">Community</div>
+      <div class="model-row">advocacy · forums</div>
+      <div class="model-row">conferences · map</div>
+    </a>
+    <a href="journal.html" class="model-card">
+      <div class="model-name" style="color:#D9754F;">Journal</div>
+      <div class="model-row">{{ site.stats.journalEntries }} entries</div>
+      <div class="model-row">reverse chronological</div>
+    </a>
+    <a href="charities.html" class="model-card">
+      <div class="model-name" style="color:#B84B6B;">Charities</div>
+      <div class="model-row">funding · support</div>
+      <div class="model-row">UK &amp; international</div>
+    </a>
+  </div>
+</section>

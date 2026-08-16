@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+permalink: literature.html
+navKey: literature
+section: literature
+crumb: Literature
+title: Literature
+nextHref: models.html
+nextLabel: Models & Data
+description: Key papers, tagged by subtype and by how they connect to machine learning.
+extraScripts:
+  - /assets/js/lit-graph.js
+  - /assets/js/paper-table.js
+---
+<script>window.PAPERS = {{ papers | dump | safe }};</script>
+
+<header class="page-hero">
+  <div class="supergraphic">{{ site.stats.papers }}</div>
+  <div class="eyebrow rise rise-1">{{ site.stats.papers }} papers</div>
+  <h1 class="rise rise-2">The <em>literature</em>.</h1>
+  <p class="lede rise rise-3">Key papers, tagged by subtype and by how they connect to machine learning — kept as a working reference, not a static bibliography.</p>
+</header>
+
+<section class="rise rise-4">
+  <div class="section-head">
+    <div class="section-title">Paper network</div>
+    <div class="section-note mono">drag nodes · hover for details</div>
+  </div>
+  <div id="lit-graph-container">
+    <canvas id="lit-graph-canvas"></canvas>
+    <div class="graph-tooltip" id="graph-tooltip"></div>
+  </div>
+  <p class="graph-note">Node size reflects tag count. Lines connect papers sharing tags. Thickness = shared tags.</p>
+</section>
+
+<section class="rise rise-5">
+  <div class="section-head">
+    <div class="section-title">All papers</div>
+    <div class="section-note mono" id="paper-count"></div>
+  </div>
+  <div class="paper-table-wrap">
+    <table class="paper-table" id="paper-table">
+      <thead>
+        <tr>
+          <th data-col="title" class="sortable">Title <span class="sort-arr">↕</span></th>
+          <th data-col="author" class="sortable">Author <span class="sort-arr">↕</span></th>
+          <th data-col="year" class="sortable">Year <span class="sort-arr">↓</span></th>
+          <th data-col="topic" class="sortable">Topic <span class="sort-arr">↕</span></th>
+          <th data-col="journal" class="sortable">Journal <span class="sort-arr">↕</span></th>
+          <th data-col="country" class="sortable">Country <span class="sort-arr">↕</span></th>
+          <th data-col="tags">Tags</th>
+        </tr>
+      </thead>
+      <tbody id="paper-tbody"></tbody>
+    </table>
+  </div>
+</section>
