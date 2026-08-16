@@ -1,9 +1,9 @@
 {
-  "shortVersion": "I was diagnosed in early 2026 and started reading everything I could find — first for myself, then out of genuine curiosity about how machine learning is actually being used in ovarian cancer research. This site is the record of that reading, organized the way I wish it had been organized for me on day one.",
+  "shortVersion": "I am a biomedical engineer who lost her mother to ovarian cancer at age 19. Since, I have been eager to learn more about the illness and current efforts to diagnose it at an earlier stage.",
   "facts": [
-    { "k": "Focus", "v": "Ovarian cancer research, ML applications in oncology" },
-    { "k": "Background", "v": "Add your professional / academic background here" },
-    { "k": "Based in", "v": "Add your location here" },
-    { "k": "Contact", "v": "your@email.com" }
+    { "k": "Focus", "v": "Ovarian cancer research, ML & AI applications in oncology" },
+    { "k": "Background", "v": "Charlotte completed her bachelor's and master's degree in biomedical engineering at Imperial College London. Throughout her studies, she focused on computational modeling and machine learning applications. She then worked as an AI Engineer for a medical fintech company before finding her current position as trainee at Siemens Healthineers." },
+    { "k": "Based in", "v": "Bavaria, Germany" },
+    { "k": "Contact", "v": "cprobstel@outlook.com" }
   ]
 }

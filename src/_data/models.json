@@ -1,17 +1,8 @@
 [
   {
-    "name": "OV-SurvNet",
+    "name": "Name of the model",
     "rows": [
-      { "label": "Task", "value": "survival" },
-      { "label": "C-index", "value": "0.71" },
-      { "label": "Source", "value": "github ↗", "href": "#" }
-    ]
-  },
-  {
-    "name": "SubtypeCNN",
-    "rows": [
-      { "label": "Task", "value": "histology subtyping" },
-      { "label": "AUC", "value": "0.88" },
+      { "label": "A", "value": "B" },
       { "label": "Source", "value": "github ↗", "href": "#" }
     ]
   }
