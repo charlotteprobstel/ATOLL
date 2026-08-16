@@ -4,12 +4,12 @@
   "lastUpdated": "Jul 2026",
   "formspreeId": "mzepange",
   "stats": {
-    "papers": 142,
-    "models": 9,
-    "datasets": 6,
-    "journalEntries": 23,
-    "community": 4,
-    "charities": 6
+    "papers": 0,
+    "models": 0,
+    "datasets": 0,
+    "journalEntries": 1,
+    "community": 0,
+    "charities": 0
   },
   "nav": [
     { "key": "home", "label": "Home", "file": "index.html" },
