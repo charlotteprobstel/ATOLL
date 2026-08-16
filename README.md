@@ -1,6 +1,6 @@
 # ATOLL
 
-The AI Tools for Ovarian Lesion Localisation (ATOLL) project — a patient-researcher's living notebook on ovarian cancer and machine learning: history, literature, models & datasets, a journal, community resources, and charities.
+The AI Tools for Ovarian Lesion Localisation (ATOLL) project — a biomedical engineer's living notebook on ovarian cancer and machine learning: history, literature, models & datasets, a journal, community resources, and charities.
 
 The site is a static site built with [Eleventy](https://www.11ty.dev/). All copy and structured content (papers, models, datasets, journal entries, timeline milestones, community links, charities) lives in JSON files under `src/_data/` — edit those, not the HTML, to update content.
 
