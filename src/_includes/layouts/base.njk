@@ -6,8 +6,8 @@
 <meta name="color-scheme" content="light">
 <title>{% if title %}{{ title }} — {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ description or site.tagline }}">
-<link rel="stylesheet" href="/assets/css/design-system.css">
-<link rel="stylesheet" href="/assets/css/design.css">
+<link rel="stylesheet" href="{{ '/assets/css/design-system.css' | url }}">
+<link rel="stylesheet" href="{{ '/assets/css/design.css' | url }}">
 </head>
 <body{% if section %} class="section-{{ section }}"{% endif %}>
 <div class="shell">
@@ -43,9 +43,9 @@
 
 {% include "partials/widget.njk" %}
 
-<script src="/assets/js/main.js"></script>
+<script src="{{ '/assets/js/main.js' | url }}"></script>
 {%- for src in extraScripts %}
-<script src="{{ src }}"></script>
+<script src="{{ src | url }}"></script>
 {%- endfor %}
 </body>
 </html>

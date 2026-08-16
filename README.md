@@ -59,7 +59,9 @@ The "Ask" tab of the widget is a visual placeholder — it isn't wired up to any
 
 ## Deploying
 
-The build output (`_site/`) is a plain static site — deploy it to Netlify, Vercel, GitHub Pages, or any static host. For GitHub Pages, run `npm run build` and publish the `_site/` directory (e.g. via a GitHub Action or the `gh-pages` package).
+The build output (`_site/`) is a plain static site — deploy it to Netlify, Vercel, GitHub Pages, or any static host.
+
+GitHub Pages deployment is automated via [.github/workflows/deploy.yml](.github/workflows/deploy.yml): every push to `main` builds the site and publishes it with the official `actions/deploy-pages` action. In the repo's **Settings → Pages**, set **Source** to "GitHub Actions" (one-time setup). The build sets `PATH_PREFIX` so asset URLs resolve correctly under the project's `/ATOLL/` subpath — see `.eleventy.js`.
 
 ## Design mockup
 
