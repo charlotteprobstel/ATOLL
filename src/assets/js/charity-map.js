@@ -39,7 +39,9 @@
     .attr('rx', 430)
     .attr('ry', 200);
 
-  fetch('/assets/data/world.geojson')
+  var worldGeoJsonUrl = mapRoot.dataset.worldGeojson || '/assets/data/world.geojson';
+
+  fetch(worldGeoJsonUrl)
     .then(function (res) { return res.json(); })
     .then(function (geojson) {
       var projection = d3.geoNaturalEarth1().fitExtent([[28, 30], [892, 430]], geojson);
