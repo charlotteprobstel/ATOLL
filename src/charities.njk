@@ -8,12 +8,15 @@ title: Charities
 nextHref: index.html
 nextLabel: Back to Home
 description: Organizations raising money for research, supporting patients, and pushing for earlier diagnosis.
+extraScripts:
+  - https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js
+  - /assets/js/charity-map.js
 ---
 <header class="page-hero">
   <div class="supergraphic">{{ site.stats.charities }}</div>
   <div class="eyebrow rise rise-1">funding &amp; support</div>
   <h1 class="rise rise-2">The <em>charities</em>.</h1>
-  <p class="lede rise rise-3">Organizations raising money for research, supporting patients, and pushing for earlier diagnosis — where donations make a measurable difference.</p>
+  <p class="lede rise rise-3">Organizations make the difference: research, supporting patients, and educating others. The best way to support them is through donations and active involvement.</p>
 </header>
 
 {% for group in charities.groups %}
@@ -24,14 +27,52 @@ description: Organizations raising money for research, supporting patients, and 
   </div>
 
   {% for item in group.items %}
-  <a href="{{ item.href }}" class="charity-card">
-    <div>
-      <div class="charity-name">{{ item.name }}</div>
-      <div class="charity-tag">{{ item.tag }}</div>
-      <div class="charity-desc">{{ item.desc }}</div>
+  <article class="charity-card">
+    <div class="charity-card-main">
+      <div class="charity-card-head">
+        <div class="charity-name">{{ item.name }}</div>
+        <div class="charity-tag">{{ item.tag }}</div>
+        <div class="charity-desc">{{ item.desc }}</div>
+      </div>
+      <div class="charity-card-actions">
+        <img class="charity-logo" src="https://www.google.com/s2/favicons?domain_url={{ item.href }}&sz=128" alt="{{ item.name }} logo" loading="lazy">
+        <a href="{{ item.href }}" class="charity-arrow" target="_blank" rel="noopener noreferrer" aria-label="Open {{ item.name }} website">↗</a>
+      </div>
     </div>
-    <div class="charity-arrow">↗</div>
-  </a>
+  </article>
+
+  {% if item.name == "Ovarian Cancer Action" %}
+  <div class="fundraise-panel">
+    <div class="fundraise-title">My Ovarian Cancer Action fundraiser</div>
+    <p class="fundraise-copy">On the 4th of October 2026, I ran a full 42.19km at the Thames Meander Marathon in London, to raise awareness on Ovarian Cancer and to raise funds for Ovarian Cancer Action. With the support of family, friends and LinkedIn, we raised a stellar {{ charities.ocaAchievement.amount }}.</p>
+
+    {% set hasAchievementImages = charities.ocaAchievement.image or charities.ocaAchievement.image2 or charities.ocaAchievement.image3 %}
+    <article class="fundraise-preview">
+      {% if hasAchievementImages %}
+      <div class="fundraise-preview-images">
+        {% if charities.ocaAchievement.image %}
+        <img src="{{ charities.ocaAchievement.image | url }}" class="fundraise-preview-image" alt="Finishing Image">
+        {% endif %}
+        {% if charities.ocaAchievement.image2 %}
+        <img src="{{ charities.ocaAchievement.image2 | url }}" class="fundraise-preview-image" alt="Fundraising Page">
+        {% endif %}
+        {% if charities.ocaAchievement.image3 %}
+        <img src="{{ charities.ocaAchievement.image3 | url }}" class="fundraise-preview-image" alt="Strava Results">
+        {% endif %}
+      </div>
+      {% endif %}
+      <div class="fundraise-preview-body">
+        <div class="fundraise-preview-amount">Raised: {{ charities.ocaAchievement.amount }}</div>
+        {% if charities.ocaAchievement.link %}
+        <a class="fundraise-preview-link" href="{{ charities.ocaAchievement.link }}" target="_blank" rel="noopener noreferrer">Visit fundraiser ↗</a>
+        {% endif %}
+        {% if charities.ocaAchievement.linkedinPost %}
+        <a class="fundraise-preview-link" href="{{ charities.ocaAchievement.linkedinPost }}" target="_blank" rel="noopener noreferrer">Visit my LinkedIn post ↗</a>
+        {% endif %}
+      </div>
+    </article>
+  </div>
+  {% endif %}
   {% endfor %}
 
   {% if loop.last %}
@@ -40,4 +81,35 @@ description: Organizations raising money for research, supporting patients, and 
   </div>
   {% endif %}
 </section>
+
+{% if group.title == "Ovarian cancer charities" %}
+<section class="rise rise-7 charity-map-section">
+  <div class="section-head">
+    <div class="section-title">Charities by country</div>
+    <div class="section-note mono">hover map regions for links</div>
+  </div>
+
+  <div class="charity-map-layout" id="charity-map">
+    <svg id="charity-map-svg" class="charity-map-svg" viewBox="0 0 920 460" role="img" aria-label="World map highlighting countries with listed ovarian cancer charities"></svg>
+
+    <aside class="charity-map-popup" id="charity-map-popup" aria-live="polite">
+      <div class="charity-map-popup-title">Hover a teal country</div>
+      <p class="charity-map-popup-note">You will see the charities and direct links for that country.</p>
+    </aside>
+
+    <div class="charity-map-data" hidden>
+      {% for country in charities.mapCountries %}
+      <div data-country-panel="{{ country.id }}">
+        <div class="charity-map-popup-title">{{ country.name }}</div>
+        <ul class="charity-map-list">
+          {% for charity in country.charities %}
+          <li><a href="{{ charity.href }}" target="_blank" rel="noopener noreferrer">{{ charity.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 {% endfor %}

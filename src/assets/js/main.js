@@ -69,4 +69,28 @@
         });
     });
   }
+
+  var mapRoot = document.getElementById('charity-map');
+  if (mapRoot) {
+    var popup = document.getElementById('charity-map-popup');
+    var activeCountries = mapRoot.querySelectorAll('.map-country--active[data-country]');
+
+    var updatePopup = function (countryId) {
+      var panel = mapRoot.querySelector('[data-country-panel="' + countryId + '"]');
+      if (panel && popup) {
+        popup.innerHTML = panel.innerHTML;
+      }
+    };
+
+    activeCountries.forEach(function (country) {
+      country.addEventListener('mouseenter', function () {
+        updatePopup(country.dataset.country);
+      });
+
+      country.addEventListener('focus', function () {
+        updatePopup(country.dataset.country);
+      });
+    });
+  }
+
 })();
