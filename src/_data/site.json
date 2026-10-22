@@ -9,7 +9,7 @@
     "datasets": 0,
     "journalEntries": 1,
     "community": 0,
-    "charities": 0
+    "charities": 10
   },
   "nav": [
     { "key": "home", "label": "Home", "file": "index.html" },

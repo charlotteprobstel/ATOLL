@@ -294,13 +294,25 @@ section{ padding:36px 0; border-top:1px solid var(--line); }
   background:var(--card); border:1px solid var(--line); border-radius:4px;
   padding:20px 22px; margin-bottom:12px;
   transition:border-color 0.2s ease, transform 0.2s ease;
-  display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  display:block;
 }
 .charity-card:hover{ border-color:var(--accent); transform:translateX(3px); }
+.charity-card-main{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+.charity-card-head{ min-width:0; }
 .charity-name{ font-family:'Fraunces', serif; font-weight:600; font-size:1rem; margin-bottom:4px; }
 .charity-tag{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--accent); margin-bottom:8px; }
 .charity-desc{ font-size:0.88rem; color:var(--ink-soft); max-width:44ch; }
-.charity-arrow{ color:var(--accent); font-size:1.1rem; flex-shrink:0; margin-top:2px; }
+.charity-card-actions{ display:flex; flex-direction:column; align-items:center; gap:10px; flex-shrink:0; }
+.charity-logo{
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  object-fit:contain;
+  padding:8px;
+}
+.charity-arrow{ color:var(--accent); font-size:1.1rem; flex-shrink:0; margin-top:2px; text-decoration:none; }
 
 .giving-note{
   background:var(--accent-soft); border:1px solid var(--accent);
@@ -308,6 +320,96 @@ section{ padding:36px 0; border-top:1px solid var(--line); }
   font-size:0.88rem; color:var(--ink-soft);
 }
 .giving-note strong{ color:var(--ink); font-family:'Fraunces', serif; }
+
+.fundraise-panel{
+  background:rgba(100, 160, 170, 0.2);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:18px;
+  margin:8px 0 18px;
+}
+.fundraise-title{ font-family:'Fraunces',serif; font-size:1rem; color:var(--ink); margin-bottom:4px; }
+.fundraise-copy{ font-size:0.84rem; color:var(--ink-soft); margin-bottom:12px; }
+
+.fundraise-preview{
+  margin-top:14px;
+  border:1px solid var(--line);
+  background:rgba(100, 160, 170, 0.2);
+  border-radius:6px;
+  padding:10px;
+}
+.fundraise-preview-images{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:10px;
+  margin-bottom:12px;
+}
+.fundraise-preview-image{
+  width:100%;
+  height:210px;
+  border-radius:4px;
+  border:1px solid var(--line);
+  object-fit:contain;
+  object-position:center;
+  background:var(--paper);
+  transition:transform 0.24s ease, box-shadow 0.24s ease;
+  transform-origin:center center;
+  position:relative;
+  z-index:1;
+}
+.fundraise-preview-image:hover{
+  transform:scale(2);
+  z-index:20;
+  box-shadow:0 14px 36px rgba(0,0,0,.28);
+}
+.fundraise-preview-body{ display:flex; flex-direction:column; gap:8px; }
+.fundraise-preview-amount{ font-family:'Fraunces',serif; font-size:1rem; color:var(--ink); }
+.fundraise-preview-text{ margin:0; font-size:0.86rem; color:var(--ink-soft); }
+.fundraise-preview-link{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--accent); text-decoration:none; }
+.fundraise-preview-link:hover{ text-decoration:underline; }
+
+.charity-map-section{ margin-top:14px; }
+.charity-map-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 290px;
+  gap:16px;
+  align-items:start;
+}
+.charity-map-svg{
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--card);
+}
+.map-ocean{ fill:rgba(180, 188, 192, 0.12); }
+.map-country{ stroke:#AAB2B6; stroke-width:1.4; }
+.map-country--inactive{ fill:#D8DDE0; }
+.map-country--active{
+  fill:rgba(124, 207, 204, 0.95);
+  stroke:#5AAEAD;
+  cursor:pointer;
+  transition:fill .22s ease, stroke .22s ease, filter .22s ease;
+}
+.map-country--active:hover,
+.map-country--active:focus{
+  fill:rgba(124, 207, 204, 1);
+  stroke:#3E8F95;
+  filter:drop-shadow(0 0 2px rgba(62, 143, 149, 0.35));
+  outline:none;
+}
+.charity-map-popup{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--card);
+  padding:14px;
+  min-height:160px;
+}
+.charity-map-popup-title{ font-family:'Fraunces',serif; font-size:1rem; color:var(--ink); margin-bottom:8px; }
+.charity-map-popup-note{ margin:0; color:var(--ink-soft); font-size:0.84rem; }
+.charity-map-list{ margin:0; padding-left:18px; display:grid; gap:7px; }
+.charity-map-list a{ color:var(--accent); text-decoration:none; font-size:0.84rem; }
+.charity-map-list a:hover{ text-decoration:underline; }
 
 footer{
   padding:44px 32px 20px; text-align:center;
@@ -370,6 +472,7 @@ body.fluorescent #fluor-toggle {
   .bead{ margin-bottom:0; }
   .bead-label{ display:none; }
   .grid2{ grid-template-columns:1fr; }
+  .charity-map-layout{ grid-template-columns:1fr; }
   h1{ font-size:1.9rem; }
 }
 

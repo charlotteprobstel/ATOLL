@@ -1,53 +1,135 @@
 {
   "groups": [
     {
-      "title": "Research & advocacy",
-      "note": "UK & international",
+      "title": "Ovarian cancer charities",
+      "note": "global organizations · official links",
       "items": [
         {
           "name": "Target Ovarian Cancer",
           "tag": "UK · research · early detection",
           "desc": "Funds research into earlier diagnosis and better treatments, and provides information and support to patients across the UK.",
-          "href": "#"
+          "href": "https://targetovariancancer.org.uk/"
         },
         {
           "name": "The Eve Appeal",
           "tag": "UK · gynecological cancers · research",
           "desc": "The only UK charity funding research into all five gynecological cancers, with a focus on early detection and raising awareness.",
-          "href": "#"
+          "href": "https://eveappeal.org.uk/"
         },
         {
           "name": "Ovarian Cancer Research Alliance (OCRA)",
           "tag": "US · research funding · advocacy",
           "desc": "The largest funder of ovarian cancer research in the US, supporting scientists working toward better treatments and a cure.",
-          "href": "#"
+          "href": "https://ocrahope.org/"
         },
         {
           "name": "Ovarian Cancer Action",
           "tag": "UK · research · patient support",
           "desc": "Campaigns for better outcomes through research funding, policy work, and connecting patients with the resources they need.",
-          "href": "#"
+          "href": "https://ovarian.org.uk/"
+        },
+        {
+          "name": "National Ovarian Cancer Coalition (NOCC)",
+          "tag": "US · awareness · community programs",
+          "desc": "Runs awareness and support programs across the US while advocating for earlier diagnosis and better outcomes.",
+          "href": "https://ovarian.org/"
         }
       ]
     },
     {
-      "title": "Patient support",
-      "note": "direct help",
+      "title": "More high-impact organizations",
+      "note": "patient support · research",
       "items": [
         {
           "name": "Ovacome",
           "tag": "UK · patient support · information",
           "desc": "Provides specialist ovarian cancer information and a support network for patients, carers, and healthcare professionals.",
-          "href": "#"
+          "href": "https://www.ovacome.org.uk/"
         },
         {
-          "name": "Cancer Research UK",
-          "tag": "UK · broad oncology · research",
-          "desc": "The world's largest independent cancer research organization — funds work across all cancer types including ovarian.",
-          "href": "#"
+          "name": "Ovarian Cancer Canada",
+          "tag": "Canada · research · patient support",
+          "desc": "Funds ovarian cancer research in Canada and provides education, advocacy, and support services for people affected.",
+          "href": "https://ovariancanada.org/"
+        },
+        {
+          "name": "Ovarian Cancer Australia",
+          "tag": "Australia · support · awareness",
+          "desc": "Provides support resources and education while driving public awareness and advocacy for ovarian cancer in Australia.",
+          "href": "https://www.ovariancancer.net.au/"
+        },
+        {
+          "name": "Ovarian Cancer Research Foundation (OCRF)",
+          "tag": "Australia · research funding",
+          "desc": "Dedicated to funding ovarian cancer research with a focus on prevention, detection, and better treatment pathways.",
+          "href": "https://www.ocrf.com.au/"
+        },
+        {
+          "name": "World Ovarian Cancer Coalition",
+          "tag": "International · collaboration · advocacy",
+          "desc": "A global coalition working to improve survival and quality of life through policy, data, and international collaboration.",
+          "href": "https://worldovariancancercoalition.org/"
+        },
+        {
+          "name": "Emer Casey Foundation",
+          "tag": "Ireland · support · awareness",
+          "desc": "Supports ovarian cancer research, patient support, and national awareness efforts to improve diagnosis and treatment outcomes in Ireland.",
+          "href": "http://www.emercaseyfoundation.com/foundation/"
         }
       ]
     }
   ],
-  "givingNote": "All charities listed here have been chosen because they direct a meaningful proportion of donations toward research or direct patient support. Links above go to their official sites — check their annual reports if you want to verify impact before donating."
+  "ocaAchievement": {
+    "image": "/assets/img/oca_marathon.jpg",
+    "image2": "/assets/img/oca_marathon_2.jpg",
+    "image3": "/assets/img/oca_marathon_3.jpg",
+    "link": "https://www.justgiving.com/page/charlotte-runs-for-ovarian-cancer",
+    "linkedinPost": "https://lnkd.in/p/eyBb4ZbC",
+    "amount": "£1,097"
+  },
+  "mapCountries": [
+    {
+      "id": "uk",
+      "name": "United Kingdom",
+      "charities": [
+        { "name": "Target Ovarian Cancer", "href": "https://targetovariancancer.org.uk/" },
+        { "name": "The Eve Appeal", "href": "https://eveappeal.org.uk/" },
+        { "name": "Ovarian Cancer Action", "href": "https://ovarian.org.uk/" },
+        { "name": "Ovacome", "href": "https://www.ovacome.org.uk/" }
+      ]
+    },
+    {
+      "id": "us",
+      "name": "United States",
+      "charities": [
+        { "name": "Ovarian Cancer Research Alliance (OCRA)", "href": "https://ocrahope.org/" },
+        { "name": "National Ovarian Cancer Coalition (NOCC)", "href": "https://ovarian.org/" }
+      ]
+    },
+    {
+      "id": "canada",
+      "name": "Canada",
+      "charities": [
+        { "name": "Ovarian Cancer Canada", "href": "https://ovariancanada.org/" }
+      ]
+    },
+    {
+      "id": "australia",
+      "name": "Australia",
+      "charities": [
+        { "name": "Ovarian Cancer Australia", "href": "https://www.ovariancancer.net.au/" },
+        { "name": "Ovarian Cancer Research Foundation (OCRF)", "href": "https://www.ocrf.com.au/" }
+      ]
+    },
+    {
+      "id": "ireland",
+      "name": "Ireland",
+      "charities": [
+        {
+          "name": "The Emer Casey Foundation", "href": "http://www.emercaseyfoundation.com/foundation//"
+        }
+      ]
+    }
+  ],
+  "givingNote": "All charities listed here are linked to their official websites. Before donating, review each organization's latest impact reports and financial statements to match your giving goals."
 }
